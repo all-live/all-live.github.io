@@ -1,0 +1,59 @@
+@import './variables.scss';
+@import './mixin.scss';
+
+@font-face {
+  font-family: 'Jalnan';
+  src: url("/fonts/Jalnan.ttf");
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-family: -apple-system, Jalnan, $font-family-sans;
+  font-size: $fontSize-4;
+}
+
+h2 {
+  font-family: -apple-system, Jalnan, $font-family-sans;
+  font-size: $fontSize-root;
+}
+
+@include desktop {
+  h1 {
+    font-family: -apple-system, Jalnan, $font-family-sans;
+    font-size: $fontSize-7;
+  }
+
+  h2 {
+    font-family: -apple-system, Jalnan, $font-family-sans;
+    font-size: $fontSize-4;
+  }
+}
+
+.header {
+  margin: auto;
+  max-width: $content-max;
+  height: 4vw;
+  min-height: 80px;
+  max-height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  
+
+  .sub-title {
+    color: $gray;
+    margin-left: 32px;
+  }
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,22 +1,32 @@
-import React, { FC, ReactNode } from 'react';
-import Head from 'next/head';
-import { NextSeo } from 'next-seo';
+import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
+import { Navbar, Meta } from '@components';
+import { useThrottle } from '@hooks';
+import { STYLE_CONSTANTS } from '@constants';
 
 interface LayoutProps {
   meta?: ReactNode;
   children: ReactNode;
 }
 
-const Layout: FC<LayoutProps> = ({ children }) => (
-  <>
-    <Head>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" key="viewport" />
-      <link rel="preload" href="/fonts/Jalnan.ttf" as="font" crossOrigin="" />
-    </Head>
-    <NextSeo title="올리브" openGraph={{ title: '올리브' }} />
-    {children}
-  </>
-);
+const Layout: FC<LayoutProps> = ({ children, meta }) => {
+  const [isNavbarTransparent, setIsNavbarTransparent] = useState<boolean>(false);
+  const { throttle } = useThrottle();
+
+  const onScrollHandler = useCallback(() => {
+    setIsNavbarTransparent(window.scrollY > STYLE_CONSTANTS.NAVBAR_HEIGHT);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', throttle<Event>({ callback: onScrollHandler }));
+  }, []);
+
+  return (
+    <>
+      {meta || <Meta />}
+      <Navbar transparent={isNavbarTransparent} />
+      {children}
+    </>
+  );
+};
 
 export default Layout;

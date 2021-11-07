@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: 'Jalnan';
-  src: url("/fonts/Jalnan.ttf");
+  src: url('/fonts/Jalnan.ttf');
 }
 
 body {
@@ -13,6 +13,8 @@ body {
 h1 {
   font-family: -apple-system, Jalnan, $font-family-sans;
   font-size: $fontSize-4;
+  padding: 0;
+  margin: 0;
 }
 
 h2 {
@@ -32,28 +34,150 @@ h2 {
   }
 }
 
-.header {
-  margin: auto;
-  max-width: $content-max;
-  height: 4vw;
-  min-height: 80px;
-  max-height: 100px;
+.allive-slogan {
+  font-size: $fontSize-8;
+  padding-bottom: $spacing-6;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.1);
+}
+
+.allive-title {
+  font-size: $fontSize-max;
+  padding-bottom: $spacing-6;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.1);
+}
+
+.download-button {
+  width: 180px;
+  height: 60px;
+  font-size: $fontSize-4;
+  margin-right: $spacing-6;
+  border: 2px solid $white;
+  color: $white;
+  border-radius: 12px;
+  font-weight: bold;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  
+  justify-content: space-evenly;
+  font-family: $font-family-sans;
+  cursor: pointer;
+  -webkit-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
+
+.download-button:hover {
+  background-color: rgba($white, 0.2);
+}
+
+.fixed-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.bg-theme {
+  background-color: $theme;
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.text-white {
+  color: $white;
+}
+
+.content-wrapper {
+  width: 100%;
+}
+
+.content {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  max-width: $content-max;
+
+  .content-box {
+    position: relative;
+    height: calc(100vh - #{$navbarHeight});
+  }
+}
+
+.navbar-transparent {
+  background-color: $white;
 
   .sub-title {
     color: $gray;
-    margin-left: 32px;
+  }
+}
+
+.navbar-primary {
+  background-color: $theme;
+
+  .sub-title {
+    color: $white;
+  }
+}
+
+.navbar {
+  height: 4vw;
+  height: $navbarHeight;
+  position: sticky;
+  top: 0;
+  transition: all 0.2s;
+  z-index: 999;
+
+  .logo {
+    cursor: pointer;
+  }
+
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    .sub-title {
+      margin-left: 32px;
+    }
+
+    .sub-title:hover {
+      color: $black;
+      cursor: pointer;
+    }
   }
 }
 
 .flex-row {
   display: flex;
   flex-direction: row;
-  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
   justify-content: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
 }

@@ -6,7 +6,7 @@ $theme: #18ec90;
 $light: #97d4b0;
 $pale: #e7f2ec;
 
-$white: #fff;
+$white: #ffffff;
 $black: #363739;
 $dark-black: #2a2a2a;
 $gray: #585858;
@@ -32,6 +32,8 @@ $fontSize-4: 1.2rem;
 $fontSize-5: 1.5rem;
 $fontSize-6: 1.85rem;
 $fontSize-7: 2rem;
+$fontSize-8: 2.5rem;
+$fontSize-max: 4rem;
 
 $spacing-px: '1px';
 $spacing-0: 0;
@@ -39,7 +41,7 @@ $spacing-1: 0.25rem;
 $spacing-2: 0.5rem;
 $spacing-3: 0.75rem;
 $spacing-4: 1rem;
-$spacing-5:s 1.25rem;
+$spacing-5: 1.25rem;
 $spacing-6: 1.5rem;
 $spacing-8: 2rem;
 $spacing-10: 2.5rem;
@@ -64,3 +66,5 @@ $fontWeight-medium: 500;
 $fontWeight-semibold: 600;
 $fontWeight-bold: 700;
 $fontWeight-black: 900;
+
+$navbarHeight: 80px;

@@ -20,7 +20,8 @@
       "@components": ["src/components/index"],
       "@constants": ["src/constants/index"],
       "@layout": ["src/layout/index"],
-      "@hooks": ["src/hooks/index"]
+      "@hooks": ["src/hooks/index"],
+      "@types": ["src/types/index"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

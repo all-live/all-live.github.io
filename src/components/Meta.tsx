@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Head from 'next/head';
-import { NextSeo } from 'next-seo';
+import { NextSeo, NextSeoProps } from 'next-seo';
 
-const Meta = () => (
+const Meta: FC<NextSeoProps> = (props) => (
   <>
     <Head>
       <meta charSet="utf-8" />
@@ -10,7 +10,7 @@ const Meta = () => (
       <link rel="preload" href="/fonts/Jalnan.ttf" as="font" crossOrigin="" />
       <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
     </Head>
-    <NextSeo title="올리브 | 홈" openGraph={{ title: '올리브' }} />
+    <NextSeo {...props} />
   </>
 );
 

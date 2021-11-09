@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import { Navbar, Meta } from '@components';
-import { useThrottle } from '@hooks';
+import { useThrottler } from '@hooks';
 import { STYLE_CONSTANTS } from '@constants';
 
 interface LayoutProps {
@@ -10,14 +10,14 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children, meta }) => {
   const [isNavbarTransparent, setIsNavbarTransparent] = useState<boolean>(false);
-  const { throttle } = useThrottle();
+  const { throttleEvent } = useThrottler();
 
   const onScrollHandler = useCallback(() => {
     setIsNavbarTransparent(window.scrollY > STYLE_CONSTANTS.NAVBAR_HEIGHT);
   }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', throttle<Event>({ callback: onScrollHandler }));
+    window.addEventListener('scroll', throttleEvent<Event>({ callback: onScrollHandler }));
   }, []);
 
   return (

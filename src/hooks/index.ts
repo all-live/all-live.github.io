@@ -1,1 +1,2 @@
-export * from './useThrottle';
+export * from './useThrottler';
+export * from './useDebounce';

@@ -1,3 +1,6 @@
 export const STYLE_CONSTANTS = {
   NAVBAR_HEIGHT: 80,
+  MIN_WHEEL_COUNT: 3,
+  MIN_WHEEL_MOMENTUM: 15,
+  MAX_PAGE: 4,
 } as const;

@@ -8,6 +8,7 @@ export interface GhUserApiResponse {
   bio: string | null;
   blog: string | null;
   html_url: string;
+  company: string | null;
 }
 
 interface ProfileBase {

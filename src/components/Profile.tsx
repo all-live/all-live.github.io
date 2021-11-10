@@ -12,7 +12,7 @@ const Profile: FC<ProfileProps> = (props) => {
     profile: { isLoaded, ...infos },
   } = props;
 
-  const { avatar_url, ghUsername, role, blog, bio, html_url } = infos;
+  const { avatar_url, ghUsername, role, blog, bio, html_url, company } = infos;
 
   return (
     <div className="profile">
@@ -27,6 +27,7 @@ const Profile: FC<ProfileProps> = (props) => {
           {isLoaded ? `Role : ${role}` : null}
         </div>
         {bio && <div className="profile-role profile-text">{isLoaded ? `Bio : ${bio}` : null}</div>}
+        {company && <div className="profile-role profile-text">{isLoaded ? `Company : ${company}` : null}</div>}
         <div className="flex-row">
           {html_url && (
             <Link href={html_url}>

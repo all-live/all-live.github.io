@@ -51,7 +51,7 @@ const Navbar: FC<NavbarProps> = ({ transparent, router }) => {
             {transparent && <Image src="/images/allive-logo-green.svg" {...logoSize} className="logo" />}
           </a>
 
-          <div className="flex-row">
+          <div className="navbar-links">
             {ROUTES.map((route) => (
               <Link href={`/${route.pathname}`} key={route.pathname}>
                 <a>

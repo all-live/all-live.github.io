@@ -19,7 +19,7 @@ const Tabs: FC = () => {
   );
 
   const startTabLoop = useCallback(() => {
-    tabLoop.current = setInterval(nextTabHandler, 3600);
+    tabLoop.current = setInterval(nextTabHandler, 5600);
   }, []);
 
   const stopTabLoop = useCallback(() => {

@@ -33,7 +33,7 @@ const TeammatesIndexPage = () => {
       <div className="content-wrapper bg-white">
         <div className="content">
           <div className="content-box">
-            <div className="allive-subtitle">올리브 팀원을 소개 합니다 👋</div>
+            <h2 className="allive-subtitle">올리브 팀원을 소개 합니다 👋</h2>
             {profiles.map((profile) => (
               <Profile key={profile.ghUsername} profile={profile} />
             ))}

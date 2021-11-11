@@ -4,3 +4,4 @@ export * from './Profile';
 export * from './Content';
 export * from './Tabs';
 export * from './DarkMode';
+export * from './Footer';

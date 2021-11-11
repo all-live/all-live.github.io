@@ -4,16 +4,22 @@ import Layout from '@layout';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDebouncedCallback, useThrottler } from '@hooks';
-import { STYLE_CONSTANTS } from '@constants';
+import { RESPONSIVE, STYLE_CONSTANTS } from '@constants';
 import { IoChevronDownCircle, IoChevronUpCircle } from 'react-icons/io5';
-import { Content, DarkMode, Tabs } from '@components';
+import { Content, DarkMode, Footer, Tabs } from '@components';
 
 const getPageHeight = () => {
   if (!window) return 0;
   return Math.floor(window.innerHeight - STYLE_CONSTANTS.NAVBAR_HEIGHT);
 };
 
+const getContentAvailable = () => {
+  if (!window) return false;
+  return window.innerWidth > RESPONSIVE.DESKTOP;
+};
+
 const Home: NextPage = () => {
+  const [isContentAvailabe, setIsContentAvailabe] = useState<boolean>(true);
   const { throttleEvent } = useThrottler();
   const pageHeight = useRef<number>(0);
   const [page, setPage] = useState<number>(0);
@@ -81,6 +87,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     window.addEventListener('scrolling', onScrollingHandler);
     window.addEventListener('scrollToTop', onResetPageHandler);
+    setIsContentAvailabe(getContentAvailable());
     return () => window.removeEventListener('scrolling', onScrollingHandler);
   }, []);
 
@@ -90,17 +97,17 @@ const Home: NextPage = () => {
     <Layout>
       <div className="contents">
         <Content>
-          <div className="flex-col justify-center w-full h-full">
+          <div className="intro">
             <h1 className="allive-slogan text-white">함께하는 세상</h1>
             <h1 className="allive-title text-white">올리브</h1>
-            <div className="flex-row">
+            <div className="download-buttons">
               <Link href="https://apps.apple.com/kr/app/%EC%98%AC%EB%A6%AC%EB%B8%8C-allive/id1591382146">
                 <a className="download-button" target="_blank">
                   <Image src="/images/app-store-white.svg" width={28} height={28} />
                   App Store
                 </a>
               </Link>
-              <Link href="#">
+              <Link href="https://play.google.com/store/apps/details?id=kr.co.alllive.app">
                 <a className="download-button" target="_blank">
                   <Image src="/images/google-play-white.png" width={24} height={24} />
                   Goole Play
@@ -114,42 +121,42 @@ const Home: NextPage = () => {
           </div>
         </Content>
 
-        <Content>
-          <Tabs />
-        </Content>
+        {isContentAvailabe && (
+          <>
+            <Content>
+              <Tabs />
+            </Content>
 
-        <Content />
+            <Content />
 
-        <Content>
-          <DarkMode />
-        </Content>
-
-        <Content />
-
-        {page !== STYLE_CONSTANTS.MAX_PAGE && (
-          <div className="content-bottom">
-            <div
-              className={`content-bottom-button bounce content-page-${pageOddEvenInfo}`}
-              onClick={onPageChangeClickHandler}
-            >
-              다음 페이지
-              <IoChevronDownCircle size={24} />
-            </div>
-          </div>
+            <Content>
+              <DarkMode />
+            </Content>
+          </>
         )}
 
-        {page === STYLE_CONSTANTS.MAX_PAGE && (
-          <div className="content-bottom">
-            <div
-              className={`content-bottom-button bounce content-page-${pageOddEvenInfo}`}
-              onClick={onResetPageHandler}
-            >
-              첫 페이지로
-              <IoChevronUpCircle size={24} />
-            </div>
-          </div>
-        )}
+        <Content>
+          <Footer renderLogo={isContentAvailabe} />
+        </Content>
       </div>
+
+      {isContentAvailabe && page !== STYLE_CONSTANTS.MAX_PAGE && (
+        <div className="page-bottom">
+          <div className={`page-bottom-button bounce page-${pageOddEvenInfo}`} onClick={onPageChangeClickHandler}>
+            다음 페이지
+            <IoChevronDownCircle size={24} />
+          </div>
+        </div>
+      )}
+
+      {isContentAvailabe && page === STYLE_CONSTANTS.MAX_PAGE && (
+        <div className="page-bottom">
+          <div className={`page-bottom-button bounce page-${pageOddEvenInfo}`} onClick={onResetPageHandler}>
+            첫 페이지로
+            <IoChevronUpCircle size={24} />
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };

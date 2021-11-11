@@ -7,6 +7,7 @@ import { Profile, Meta } from '@components';
 const teammates: UnLoadedProfile[] = [
   { ghUsername: 'JeongShin', role: '프론트엔드 개발', isLoaded: false },
   { ghUsername: 'leeshinyook', role: '백엔드 개발', isLoaded: false },
+  { ghUsername: 'jinwoongshin', role: '마케팅 영업', isLoaded: false },
 ];
 
 const TeammatesIndexPage = () => {

@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useDebouncedCallback, useThrottler } from '@hooks';
 import { STYLE_CONSTANTS } from '@constants';
+import { IoChevronDownCircle, IoChevronUpCircle } from 'react-icons/io5';
+import { Content, DarkMode, Tabs } from '@components';
 
 const getPageHeight = () => {
   if (!window) return 0;
@@ -87,58 +89,42 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <div className="contents">
-        <div className="content-wrapper">
-          <div className="content">
-            <div className="content-box">
-              <div className="flex-col justify-center w-full h-full">
-                <h1 className="allive-slogan text-white">함께하는 세상</h1>
-                <h1 className="allive-title text-white">올리브</h1>
-                <div className="flex-row">
-                  <Link href="https://apps.apple.com/kr/app/%EC%98%AC%EB%A6%AC%EB%B8%8C-allive/id1591382146">
-                    <a className="download-button" target="_blank">
-                      <Image src="/images/app-store-white.svg" width={28} height={28} />
-                      App Store
-                    </a>
-                  </Link>
-                  <Link href="#">
-                    <a className="download-button" target="_blank">
-                      <Image src="/images/google-play-white.png" width={24} height={24} />
-                      Goole Play
-                    </a>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="fixed-bottom-right">
-                <Image src="/images/alliver-and-allivia.svg" width={750} height={528} />
-              </div>
+        <Content>
+          <div className="flex-col justify-center w-full h-full">
+            <h1 className="allive-slogan text-white">함께하는 세상</h1>
+            <h1 className="allive-title text-white">올리브</h1>
+            <div className="flex-row">
+              <Link href="https://apps.apple.com/kr/app/%EC%98%AC%EB%A6%AC%EB%B8%8C-allive/id1591382146">
+                <a className="download-button" target="_blank">
+                  <Image src="/images/app-store-white.svg" width={28} height={28} />
+                  App Store
+                </a>
+              </Link>
+              <Link href="#">
+                <a className="download-button" target="_blank">
+                  <Image src="/images/google-play-white.png" width={24} height={24} />
+                  Goole Play
+                </a>
+              </Link>
             </div>
           </div>
-        </div>
 
-        <div className="content-wrapper">
-          <div className="content">
-            <div className="content-box"></div>
+          <div className="fixed-bottom-right">
+            <Image src="/images/alliver-and-allivia.svg" width={750} height={528} />
           </div>
-        </div>
+        </Content>
 
-        <div className="content-wrapper">
-          <div className="content">
-            <div className="content-box"></div>
-          </div>
-        </div>
+        <Content>
+          <Tabs />
+        </Content>
 
-        <div className="content-wrapper">
-          <div className="content">
-            <div className="content-box"></div>
-          </div>
-        </div>
+        <Content />
 
-        <div className="content-wrapper">
-          <div className="content">
-            <div className="content-box"></div>
-          </div>
-        </div>
+        <Content>
+          <DarkMode />
+        </Content>
+
+        <Content />
 
         {page !== STYLE_CONSTANTS.MAX_PAGE && (
           <div className="content-bottom">
@@ -147,6 +133,7 @@ const Home: NextPage = () => {
               onClick={onPageChangeClickHandler}
             >
               다음 페이지
+              <IoChevronDownCircle size={24} />
             </div>
           </div>
         )}
@@ -158,6 +145,7 @@ const Home: NextPage = () => {
               onClick={onResetPageHandler}
             >
               첫 페이지로
+              <IoChevronUpCircle size={24} />
             </div>
           </div>
         )}

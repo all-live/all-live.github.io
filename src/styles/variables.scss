@@ -74,3 +74,8 @@ $fontWeight-black: 900;
 
 $navbar-height: 80px;
 $content-padding-bottom: 48px;
+$content-box-height: calc(100vh - #{$content-padding-bottom} - #{$navbar-height});
+
+$desktop-tab-image-height: 720px;
+$desktop-tab-image-width: 400px;
+$desktop-tab-padding: calc((100vh - #{$desktop-tab-image-height}) / 2);

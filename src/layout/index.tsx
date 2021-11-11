@@ -25,7 +25,7 @@ const Layout: FC<LayoutProps> = ({ children, meta }) => {
 
   return (
     <>
-      {meta || <Meta title="올리브" />}
+      {meta || <Meta title="올리브 - Allive" />}
       <Navbar transparent={isNavbarTransparent} router={router} />
       {children}
     </>

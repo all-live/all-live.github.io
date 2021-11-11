@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Layout from '@layout';
 import { LoadedProfile, UnLoadedProfile } from '@types';
 import { API } from '@constants';
-import { Profile, Meta } from '@components';
+import { Profile, Meta, Content } from '@components';
 
 const teammates: UnLoadedProfile[] = [
   { ghUsername: 'JeongShin', role: '프론트엔드 개발', isLoaded: false },
@@ -30,16 +30,12 @@ const TeammatesIndexPage = () => {
 
   return (
     <Layout meta={<Meta title="올리브 | 팀원소개" />}>
-      <div className="content-wrapper bg-white">
-        <div className="content">
-          <div className="content-box">
-            <h2 className="allive-subtitle">올리브 팀원을 소개 합니다 👋</h2>
-            {profiles.map((profile) => (
-              <Profile key={profile.ghUsername} profile={profile} />
-            ))}
-          </div>
-        </div>
-      </div>
+      <Content>
+        <h2 className="allive-subtitle">올리브 팀원을 소개 합니다 👋</h2>
+        {profiles.map((profile) => (
+          <Profile key={profile.ghUsername} profile={profile} />
+        ))}
+      </Content>
     </Layout>
   );
 };

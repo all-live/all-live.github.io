@@ -142,7 +142,7 @@ const Home: NextPage = () => {
         </Content>
       </div>
 
-      {isContentAvailabe && page !== STYLE_CONSTANTS.MAX_PAGE && (
+      {isContentAvailabe && page !== STYLE_CONSTANTS.MAX_PAGE + 1 && (
         <div className="page-bottom">
           <div className={`page-bottom-button bounce page-${pageOddEvenInfo}`} onClick={onPageChangeClickHandler}>
             다음 페이지
@@ -151,7 +151,7 @@ const Home: NextPage = () => {
         </div>
       )}
 
-      {isContentAvailabe && page === STYLE_CONSTANTS.MAX_PAGE && (
+      {isContentAvailabe && page === STYLE_CONSTANTS.MAX_PAGE + 1 && (
         <div className="page-bottom">
           <div className={`page-bottom-button bounce page-${pageOddEvenInfo}`} onClick={onResetPageHandler}>
             첫 페이지로
@@ -163,4 +163,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default React.memo(Home);

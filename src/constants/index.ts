@@ -15,7 +15,7 @@ export const STYLE_CONSTANTS = {
   NAVBAR_HEIGHT: 80,
   MIN_WHEEL_COUNT: 3,
   MIN_WHEEL_MOMENTUM: 20,
-  MAX_PAGE: 4,
+  MAX_PAGE: 3,
 } as const;
 
 export const RESPONSIVE = {

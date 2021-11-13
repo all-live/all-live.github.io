@@ -40,9 +40,7 @@ const Navbar: FC<NavbarProps> = ({ transparent, router }) => {
     router.push('/');
   }, []);
 
-  const toggleMenuHandler = useCallback(() => {
-    setIsMenuOpened((prev) => !prev);
-  }, []);
+  const toggleMenuHandler = useCallback(() => setIsMenuOpened((prev) => !prev), []);
 
   useEffect(() => {
     setLogoSize(getLogoSize());
@@ -52,16 +50,16 @@ const Navbar: FC<NavbarProps> = ({ transparent, router }) => {
     <nav className={`navbar navbar-${transparent ? 'transparent' : 'primary'}`}>
       <div className="content">
         <div className="navbar-content">
-          <a onClick={onLogoClickHandler}>
-            {!transparent && <Image src="/images/allive-logo-white.svg" {...logoSize} className="logo" />}
-            {transparent && <Image src="/images/allive-logo-green.svg" {...logoSize} className="logo" />}
+          <a onClick={onLogoClickHandler} className="logo">
+            {!isMenuOpened && !transparent && <Image src="/images/allive-logo-white.svg" {...logoSize} />}
+            {transparent && <Image src="/images/allive-logo-green.svg" {...logoSize} />}
+            {isMenuOpened && <Image src="/images/allive-logo-green.svg" {...logoSize} />}
           </a>
 
-          <div className={`menu-${isMenuOpened ? 'opened' : 'closed'}`} onClick={toggleMenuHandler}>
-            <IoMenu size={30} />
-          </div>
-
           <div className={`navbar-links navbar-links-${isMenuOpened ? 'opened' : 'closed'}`}>
+            <div className={`menu menu-${isMenuOpened ? 'opened' : 'closed'}`} onClick={toggleMenuHandler}>
+              <IoMenu size={30} />
+            </div>
             {ROUTES.map((route) => (
               <Link href={`/${route.pathname}`} key={route.pathname}>
                 <a>

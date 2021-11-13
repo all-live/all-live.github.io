@@ -81,7 +81,7 @@ footer {
     display: flex;
     background-color: $dark-black;
     color: $white;
-    transition:  transform 500ms ease-in-out;
+    transition: transform 500ms ease-in-out;
 
     .card-col {
       @include desktop {
@@ -95,6 +95,7 @@ footer {
       &-text {
         font-size: $fontSize-root;
         color: $light-gray;
+        font-family: $font-family-sans;
       }
 
       &-link {
@@ -111,7 +112,6 @@ footer {
     transform: scale(1.006);
   }
 }
-
 
 img {
   -webkit-user-drag: none;
@@ -143,7 +143,7 @@ h2 {
 
 .intro {
   width: 100%;
-  height: 100%;  
+  height: 100%;
   display: flex;
   flex-direction: column;
 
@@ -217,7 +217,7 @@ h2 {
   @include mobile {
     width: 140px;
   }
-  
+
   @include desktop {
     width: 180px;
     margin-right: $spacing-6;
@@ -298,6 +298,7 @@ h2 {
   &-box {
     position: relative;
     height: $content-box-height;
+    max-height: $content-box-height;
     padding-bottom: $content-padding-bottom;
   }
 }
@@ -358,23 +359,24 @@ h2 {
   -webkit-transition: background-color 400ms ease;
   height: $navbar-height;
   position: sticky;
+  position: -webkit-sticky;
+  left: 0;
   top: 0;
-  z-index: 999;
+  z-index: 99;
 
   @include mobile {
     padding: 0 16px;
+
+    .logo {
+      position: fixed;
+      top: $spacing-5;
+      left: $spacing-4;
+    }
   }
 
   .logo {
+    z-index: 99999;
     cursor: pointer;
-  }
-
-  .menu-closed {
-    color: $white;
-  }
-
-  .menu-opened {
-    color: $dark-black;
   }
 
   &-content {
@@ -385,21 +387,85 @@ h2 {
   }
 
   &-links {
+    position: relative;
+
+    .menu {
+      display: block;
+      position: absolute;
+      top: $spacing-5;
+      right: $spacing-4;
+    }
+
+    .menu-closed {
+      color: $white;
+    }
+
+    .menu-opened {
+      color: $dark-black;
+    }
+
     @include mobile {
-      display: none;
+      transition: height 400ms ease-in-out;
+
+      &-opened {
+        height: 30vh;
+        box-shadow: rgba($dark-black, 0.2) 0px 10px 20px 4px;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+
+        .sub-title,
+        .sub-title-active {
+          display: block;
+        }
+
+        .sub-title {
+          color: $light-gray;
+        }
+
+        .sub-title-active {
+          color: $dark-black;
+        }
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &-closed {
+        height: $navbar-height;
+        background-color: $theme;
+
+        .sub-title,
+        .sub-title-active {
+          display: none;
+        }
+      }
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: $white;
+      width: 100vw;
+      display: flex;
+      align-items: center;
     }
 
     @include desktop {
       display: flex;
-    }
 
-    .sub-title {
-      margin-left: 32px;
-    }
+      .menu {
+        display: none;
+      }
 
-    .sub-title:hover {
-      color: $black;
-      cursor: pointer;
+      .sub-title {
+        margin-left: 32px;
+      }
+
+      .sub-title:hover {
+        color: $black;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -458,12 +524,15 @@ h2 {
     min-height: 36px;
     line-height: 36px;
     border-radius: 8px;
+    font-family: $font-family-sans;
+    font-weight: bold;
   }
 
   &-username {
     font-size: $fontSize-5;
     min-width: 120px;
     color: $dark-black;
+    font-family: $font-jalnan;
   }
 
   &-role {
@@ -503,7 +572,7 @@ h2 {
   width: 100%;
   height: 100%;
   color: $white;
-    font-size: $fontSize-5;
+  font-size: $fontSize-5;
 }
 
 .content-darkmode {
@@ -588,7 +657,8 @@ h2 {
     &-subtitle {
       font-size: $fontSize-5;
       line-height: $fontSize-max;
-      color: $middle-gray;
+      color: $gray;
+      font-family: $font-family-sans;
       justify-content: center;
       white-space: pre;
       text-align: center;
@@ -716,20 +786,20 @@ h2 {
   right: 0;
   bottom: 0;
   background-color: $border-gray;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
   background-color: $white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {

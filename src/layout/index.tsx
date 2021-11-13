@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import { Navbar, Meta } from '@components';
 import { useThrottler } from '@hooks';
-import { STYLE_CONSTANTS } from '@constants';
+import { RESPONSIVE, STYLE_CONSTANTS } from '@constants';
 import { useRouter } from 'next/router';
 
 interface LayoutProps {
@@ -15,6 +15,8 @@ const Layout: FC<LayoutProps> = ({ children, meta }) => {
   const router = useRouter();
 
   const onScrollHandler = useCallback(() => {
+    if (window.innerWidth < RESPONSIVE.DESKTOP) return;
+
     setIsNavbarTransparent(window.scrollY > STYLE_CONSTANTS.NAVBAR_HEIGHT);
     window.dispatchEvent(new CustomEvent('scrolling'));
   }, []);

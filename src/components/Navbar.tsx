@@ -1,8 +1,9 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RESPONSIVE } from '@constants';
-import { NextRouter, useRouter } from 'next/router';
+import { NextRouter } from 'next/router';
+import { IoMenu } from 'react-icons/io5';
 
 interface NavbarProps {
   transparent: boolean;
@@ -29,6 +30,7 @@ type LogoSize = { width: number; height: number };
 
 const Navbar: FC<NavbarProps> = ({ transparent, router }) => {
   const [logoSize, setLogoSize] = useState<LogoSize>({ width: 0, height: 0 });
+  const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false);
 
   const onLogoClickHandler = useCallback(() => {
     if (router.pathname === '/') {
@@ -36,6 +38,10 @@ const Navbar: FC<NavbarProps> = ({ transparent, router }) => {
       return;
     }
     router.push('/');
+  }, []);
+
+  const toggleMenuHandler = useCallback(() => {
+    setIsMenuOpened((prev) => !prev);
   }, []);
 
   useEffect(() => {
@@ -51,7 +57,11 @@ const Navbar: FC<NavbarProps> = ({ transparent, router }) => {
             {transparent && <Image src="/images/allive-logo-green.svg" {...logoSize} className="logo" />}
           </a>
 
-          <div className="navbar-links">
+          <div className={`menu-${isMenuOpened ? 'opened' : 'closed'}`} onClick={toggleMenuHandler}>
+            <IoMenu size={30} />
+          </div>
+
+          <div className={`navbar-links navbar-links-${isMenuOpened ? 'opened' : 'closed'}`}>
             {ROUTES.map((route) => (
               <Link href={`/${route.pathname}`} key={route.pathname}>
                 <a>

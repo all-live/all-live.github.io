@@ -26,6 +26,10 @@ a {
   font-family: $font-family-sans;
   padding-bottom: $spacing-24;
 
+  @include mobile {
+    padding: $spacing-2;
+  }
+
   .title {
     font-family: $font-jalnan;
   }
@@ -365,6 +369,14 @@ h2 {
     cursor: pointer;
   }
 
+  .menu-closed {
+    color: $white;
+  }
+
+  .menu-opened {
+    color: $dark-black;
+  }
+
   &-content {
     display: flex;
     justify-content: space-between;
@@ -482,6 +494,16 @@ h2 {
   &-chip:hover {
     transform: translateY(-4px);
   }
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: $white;
+    font-size: $fontSize-5;
 }
 
 .content-darkmode {

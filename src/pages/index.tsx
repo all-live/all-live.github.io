@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useDebouncedCallback, useThrottler } from '@hooks';
 import { RESPONSIVE, STYLE_CONSTANTS } from '@constants';
 import { IoChevronDownCircle, IoChevronUpCircle } from 'react-icons/io5';
-import { Content, DarkMode, Footer, Tabs } from '@components';
+import { Content, DarkMode, Detail, Footer, Tabs } from '@components';
 
 const getPageHeight = () => {
   if (!window) return 0;
@@ -127,7 +127,9 @@ const Home: NextPage = () => {
               <Tabs />
             </Content>
 
-            <Content />
+            <Content>
+              <Detail />
+            </Content>
 
             <Content>
               <DarkMode />

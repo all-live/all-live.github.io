@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 const iconProps = { size: 36 };
 
 const Tabs: FC = () => {
-  const { ref, inView } = useInView({ threshold: 0.5 });
+  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
   const tabLoop = useRef<NodeJS.Timer | null>(null);
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
 

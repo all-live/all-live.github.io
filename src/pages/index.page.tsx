@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { NextPage } from 'next';
 import Layout from '@layout';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useDebouncedCallback, useThrottler } from '@hooks';
 import { RESPONSIVE, STYLE_CONSTANTS } from '@constants';
@@ -110,13 +109,13 @@ const Home: NextPage = () => {
             <div className="download-buttons">
               <Link href="https://apps.apple.com/kr/app/%EC%98%AC%EB%A6%AC%EB%B8%8C-allive/id1591382146">
                 <a className="download-button" target="_blank">
-                  <Image src="/images/app-store-white.svg" width={28} height={28} />
+                  <img src="/images/app-store-white.svg" width={28} height={28} />
                   App Store
                 </a>
               </Link>
               <Link href="https://play.google.com/store/apps/details?id=kr.co.alllive.app">
                 <a className="download-button" target="_blank">
-                  <Image src="/images/google-play-white.png" width={24} height={24} />
+                  <img src="/images/google-play-white.png" width={24} height={24} />
                   Goole Play
                 </a>
               </Link>
@@ -124,7 +123,7 @@ const Home: NextPage = () => {
           </div>
 
           <div className="fixed-bottom-right">
-            <Image src="/images/alliver-and-allivia.svg" width={750} height={528} />
+            <img src="/images/alliver-and-allivia.svg" width={750} height={528} />
           </div>
         </Content>
 

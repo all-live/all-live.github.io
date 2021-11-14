@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 interface FooterProps {
@@ -8,7 +7,7 @@ interface FooterProps {
 
 const Footer: FC<FooterProps> = ({ renderLogo }) => (
   <footer>
-    {renderLogo && <Image src="/images/allive-logo-white.svg" width={300} height={94} />}
+    {renderLogo && <img src="/images/allive-logo-white.svg" width={300} height={94} />}
     <div className="card">
       <div className="card-col">
         <h2>About Us</h2>

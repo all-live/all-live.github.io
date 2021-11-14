@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { TABS } from '@constants';
 import { useInView } from 'react-intersection-observer';
 
@@ -43,7 +42,7 @@ const Tabs: FC = () => {
     <div className="tabs" ref={ref}>
       {TABS.map((_, index) => (
         <div key={_.name} className={`tab-image ${activeTabIndex === index ? '' : 'hidden'}`}>
-          <Image src={`/images/main/tab_${index}.svg`} width={400} height={720} />
+          <img src={`/images/main/tab_${index}.svg`} width={400} height={720} />
         </div>
       ))}
 

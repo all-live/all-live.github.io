@@ -1,23 +1,21 @@
 #!/usr/bin/env sh
 
-# set -e
+set -e
 
-# rm -rf node_modules/.cache
+rm -rf node_modules/.cache
+rm -rf .next
 
-# next build
+yarn build
 
 next export
 
 touch out/.nojekyll
 
 git add -f out/
-
-git clone -b gh-pages https://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@github.com//all-live/AllLive-Landing/
-
-cp -rf AllLive-Landing/.git ./.git
-rm -rf AllLive-Landing
-
-git add .
+git checkout -b temp-deploy-gh-pages
 git commit -m "$*"
-
-git push origin gh-pages
+git subtree split --prefix out -b gh-pages
+git push -f origin gh-pages:gh-pages
+git branch -D gh-pages
+git checkout main
+git branch -D temp-deploy-gh-pages

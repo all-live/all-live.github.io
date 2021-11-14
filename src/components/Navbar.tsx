@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { RESPONSIVE } from '@constants';
 import { NextRouter } from 'next/router';
@@ -51,9 +50,9 @@ const Navbar: FC<NavbarProps> = ({ transparent, router }) => {
       <div className="content">
         <div className="navbar-content">
           <a onClick={onLogoClickHandler} className="logo">
-            {!isMenuOpened && !transparent && <Image src="/images/allive-logo-white.svg" {...logoSize} />}
-            {transparent && <Image src="/images/allive-logo-green.svg" {...logoSize} />}
-            {isMenuOpened && <Image src="/images/allive-logo-green.svg" {...logoSize} />}
+            {!isMenuOpened && !transparent && <img src="/images/allive-logo-white.svg" {...logoSize} />}
+            {transparent && <img src="/images/allive-logo-green.svg" {...logoSize} />}
+            {isMenuOpened && <img src="/images/allive-logo-green.svg" {...logoSize} />}
           </a>
 
           <div className={`navbar-links navbar-links-${isMenuOpened ? 'opened' : 'closed'}`}>

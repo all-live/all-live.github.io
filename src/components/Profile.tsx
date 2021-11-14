@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { LoadedProfile, UnLoadedProfile } from '@types';
-import Image from 'next/image';
 import Link from 'next/link';
 
 interface ProfileProps {
@@ -17,7 +16,7 @@ const Profile: FC<ProfileProps> = (props) => {
   return (
     <div className="profile">
       <div className={`profile-image ${isLoaded ? '' : 'skeleton'}`}>
-        {isLoaded && avatar_url && <Image className="profile-image" src={avatar_url} width={300} height={300} />}
+        {isLoaded && avatar_url && <img className="profile-image" src={avatar_url} width={300} height={300} />}
       </div>
       <div className="profile-content">
         <div className={`profile-username profile-text ${isLoaded ? '' : 'skeleton'}`}>
@@ -32,7 +31,7 @@ const Profile: FC<ProfileProps> = (props) => {
           {html_url && (
             <Link href={html_url}>
               <a target="_blank" className="profile-chip">
-                <Image src="/images/github-logo-white.png" width={24} height={24} />
+                <img src="/images/github-logo-white.png" width={24} height={24} />
                 <span className="profile-chip-text">GitHub</span>
               </a>
             </Link>
@@ -40,7 +39,7 @@ const Profile: FC<ProfileProps> = (props) => {
           {blog && (
             <Link href={blog}>
               <a target="_blank" className="profile-chip">
-                <Image src="/images/blog-logo-white.png" width={24} height={24} />
+                <img src="/images/blog-logo-white.png" width={24} height={24} />
                 <span className="profile-chip-text">Blog</span>
               </a>
             </Link>

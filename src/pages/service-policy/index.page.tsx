@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '@layout';
-import { Content, Meta } from '@components';
+import Content from '@components/Content';
+import Meta from '@components/Meta';
 
 const ServicePolicyIndexPage = () => (
   <Layout meta={<Meta title="올리브 | 이용약관" />}>

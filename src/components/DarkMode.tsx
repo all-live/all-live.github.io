@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 
 const DarkMode: FC = () => {
-  const { ref, inView } = useInView({ threshold: 0.5 });
+  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   const activateDarkModeHandler = useCallback(() => {
@@ -48,4 +48,4 @@ const DarkMode: FC = () => {
   );
 };
 
-export { DarkMode };
+export default DarkMode;

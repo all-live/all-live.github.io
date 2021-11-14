@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '@layout';
-import { Content, Meta } from '@components';
+import Meta from '@components/Meta';
+import Content from '@components/Content';
 
 const PrivacyPolicyIndexPage = () => (
   <Layout meta={<Meta title="올리브 | 개인정보 처리방침" />}>

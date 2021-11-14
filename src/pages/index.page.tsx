@@ -6,7 +6,11 @@ import Link from 'next/link';
 import { useDebouncedCallback, useThrottler } from '@hooks';
 import { RESPONSIVE, STYLE_CONSTANTS } from '@constants';
 import { IoChevronDownCircle, IoChevronUpCircle } from 'react-icons/io5';
-import { Content, DarkMode, Detail, Footer, Tabs } from '@components';
+import Content from '@components/Content';
+import DarkMode from '@components/DarkMode';
+import Detail from '@components/Detail';
+import Footer from '@components/Footer';
+import Tabs from '@components/Tabs';
 
 const getPageHeight = () => {
   if (!window) return 0;
@@ -79,6 +83,7 @@ const Home: NextPage = () => {
     window.addEventListener('wheel', throttledEvent, { passive: false });
 
     pageHeight.current = getPageHeight();
+
     return () => {
       window.removeEventListener('wheel', throttledEvent);
     };
@@ -88,7 +93,9 @@ const Home: NextPage = () => {
     window.addEventListener('scrolling', onScrollingHandler);
     window.addEventListener('scrollToTop', onResetPageHandler);
     setIsContentAvailabe(getContentAvailable());
-    return () => window.removeEventListener('scrolling', onScrollingHandler);
+    return () => {
+      window.removeEventListener('scrolling', onScrollingHandler);
+    };
   }, []);
 
   const pageOddEvenInfo = page % 2 === 0 ? 'even' : 'odd';

@@ -80,4 +80,4 @@ const Navbar: FC<NavbarProps> = ({ transparent, router }) => {
   );
 };
 
-export { Navbar };
+export default Navbar;

@@ -1,8 +1,9 @@
 import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
-import { Navbar, Meta } from '@components';
 import { useThrottler } from '@hooks';
 import { RESPONSIVE, STYLE_CONSTANTS } from '@constants';
 import { useRouter } from 'next/router';
+import Meta from '@components/Meta';
+import Navbar from '@components/Navbar';
 
 interface LayoutProps {
   meta?: ReactNode;
@@ -27,7 +28,7 @@ const Layout: FC<LayoutProps> = ({ children, meta }) => {
 
   return (
     <>
-      {meta || <Meta title="올리브 - Allive" />}
+      {meta || <Meta title="올리브 - Allive Together!" />}
       <Navbar transparent={isNavbarTransparent} router={router} />
       {children}
     </>

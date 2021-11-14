@@ -8,4 +8,4 @@ const Content: FC = ({ children }) => (
   </div>
 );
 
-export { Content };
+export default Content;

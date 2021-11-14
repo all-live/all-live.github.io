@@ -39,4 +39,4 @@ const Footer: FC<FooterProps> = ({ renderLogo }) => (
   </footer>
 );
 
-export { Footer };
+export default Footer;

@@ -14,4 +14,4 @@ const Meta: FC<NextSeoProps> = (props) => (
   </>
 );
 
-export { Meta };
+export default Meta;

@@ -51,4 +51,4 @@ const Profile: FC<ProfileProps> = (props) => {
   );
 };
 
-export { Profile };
+export default Profile;

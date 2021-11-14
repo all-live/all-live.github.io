@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@styles/*": ["src/styles/*"],
-      "@components": ["src/components/index"],
+      "@components/*": ["src/components/*"],
       "@constants": ["src/constants/index"],
       "@layout": ["src/layout/index"],
       "@hooks": ["src/hooks/index"],

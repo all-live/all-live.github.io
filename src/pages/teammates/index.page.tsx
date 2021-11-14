@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Layout from '@layout';
 import { LoadedProfile, UnLoadedProfile } from '@types';
 import { API } from '@constants';
-import { Profile, Meta, Content } from '@components';
+import Profile from '@components/Profile';
+import Meta from '@components/Meta';
+import Content from '@components/Content';
 
 const teammates: UnLoadedProfile[] = [
   { ghUsername: 'JeongShin', role: '프론트엔드 개발', isLoaded: false },

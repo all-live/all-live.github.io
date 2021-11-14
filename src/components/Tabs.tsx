@@ -69,4 +69,4 @@ const Tabs: FC = () => {
   );
 };
 
-export { Tabs };
+export default Tabs;

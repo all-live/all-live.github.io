@@ -5,13 +5,13 @@ import { useInView } from 'react-intersection-observer';
 const iconProps = { size: 36 };
 
 const Tabs: FC = () => {
-  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.9, triggerOnce: true });
   const tabLoop = useRef<NodeJS.Timer | null>(null);
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
 
   const onClickHandler = useCallback(
     (index: number) => () => {
-      stopTabLoop();
+      clearLoop();
       setActiveTabIndex(index);
     },
     [],
@@ -21,7 +21,7 @@ const Tabs: FC = () => {
     tabLoop.current = setInterval(nextTabHandler, 5600);
   }, []);
 
-  const stopTabLoop = useCallback(() => {
+  const clearLoop = useCallback(() => {
     if (!tabLoop.current) return;
     clearInterval(tabLoop.current);
   }, []);
@@ -32,17 +32,27 @@ const Tabs: FC = () => {
 
   useEffect(() => {
     if (!inView) {
-      stopTabLoop();
+      clearLoop();
       return;
     }
-    startTabLoop();
+    if (inView) {
+      console.log('tabs 이벤트 루프 시작');
+      startTabLoop();
+    }
+
+    return () => {
+      clearLoop();
+    };
   }, [inView]);
 
   return (
     <div className="tabs" ref={ref}>
       {TABS.map((_, index) => (
-        <div key={_.name} className={`tab-image ${activeTabIndex === index ? '' : 'hidden'}`}>
-          <img src={`/images/main/tab_${index}.svg`} width={400} height={720} />
+        <div
+          key={_.name}
+          className={`tab-image ${activeTabIndex === index ? 'tab-image-visible' : 'tab-image-hidden'}`}
+        >
+          <img src={`/images/main/tab_${index}.svg`} />
         </div>
       ))}
 

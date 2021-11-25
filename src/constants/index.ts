@@ -22,7 +22,7 @@ export const RESPONSIVE = {
   MOBILE: 360,
   TABLET: 768,
   DESKTOP: 1024,
-};
+} as const;
 
 export const TABS = [
   {
@@ -74,4 +74,9 @@ export const TABS = [
 
 export const API = {
   GH_USER_BASE_URL: 'https://api.github.com/users',
-};
+} as const;
+
+export const LINKS = {
+  APP_STORE: 'https://apps.apple.com/kr/app/%EC%98%AC%EB%A6%AC%EB%B8%8C-allive/id1591382146',
+  PLAY_STORE: 'https://play.google.com/store/apps/details?id=kr.co.alllive.app',
+} as const;

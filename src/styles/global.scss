@@ -208,12 +208,25 @@ h2 {
   display: flex;
   width: 100%;
 
+  .apple-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .google-play-icon {
+    width: 24px;
+    height: 24px;
+  }
+
   @include mobile {
     justify-content: space-evenly;
   }
 }
 
 .download-button {
+  background-color: $theme;
+  z-index: 90;
+
   @include mobile {
     width: 140px;
   }
@@ -255,9 +268,17 @@ h2 {
 
   @include desktop {
     bottom: $content-padding-bottom;
-  }
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
-  right: 0;
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 750px;
+      max-height: 528px;
+    }
+  }
 }
 
 .bg-theme {
@@ -297,6 +318,7 @@ h2 {
 
   &-box {
     position: relative;
+    padding: 0 $spacing-10;
     height: $content-box-height;
     max-height: $content-box-height;
     padding-bottom: $content-padding-bottom;
@@ -384,6 +406,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    padding: 0 $spacing-10;
   }
 
   &-links {
@@ -579,35 +602,49 @@ h2 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
   width: 100%;
   height: 100%;
 
   &-guide {
     display: flex;
+    width: 50%;
     flex-direction: column;
     align-items: center;
+
     h1 {
       padding-bottom: $spacing-2;
     }
   }
 
   &-image {
-    position: relative;
-    width: 400px;
-    height: 700px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &-img {
-      transition: opacity 400ms linear;
-      position: absolute;
-      top: 0;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: $desktop-tab-image-width;
+      max-height: $desktop-tab-image-height;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity 400ms linear;
+      }
     }
 
     &-img-hidden {
       opacity: 0;
     }
 
-    &-img-show {
+    &-img-visible {
       opacity: 1;
     }
   }
@@ -623,22 +660,33 @@ h2 {
   height: 100%;
 
   .tab-image {
-    opacity: 1;
-    transition: opacity 400ms ease-in-out;
-    width: $desktop-tab-image-width;
-    height: $desktop-tab-image-height;
+    transition: opacity 400ms linear;
+    width: 100%;
+    height: 100%;
+    max-width: $desktop-tab-image-width;
+    max-height: $desktop-tab-image-height;
     position: absolute;
     left: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
-  .hidden {
+  .tab-image-visible {
+    opacity: 1;
+  }
+
+  .tab-image-hidden {
     opacity: 0;
   }
 
   .tab-content {
     width: 100%;
-    height: $desktop-tab-image-height;
+    height: 100%;
     padding-left: $desktop-tab-image-width;
+    max-height: $desktop-tab-image-height;
     padding-top: $desktop-tab-padding;
     padding-bottom: $desktop-tab-padding;
     display: flex;

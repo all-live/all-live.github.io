@@ -17,13 +17,18 @@ const Layout: FC<LayoutProps> = ({ children, meta }) => {
 
   const onScrollHandler = useCallback(() => {
     if (window.innerWidth < RESPONSIVE.DESKTOP) return;
-
     setIsNavbarTransparent(window.scrollY > STYLE_CONSTANTS.NAVBAR_HEIGHT);
     window.dispatchEvent(new CustomEvent('scrolling'));
   }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', throttleEvent<Event>({ callback: onScrollHandler, throttleInMs: 80 }));
+    const throttledScrollEvent = throttleEvent<Event>({ callback: onScrollHandler, throttleInMs: 400 });
+
+    window.addEventListener('scroll', throttledScrollEvent);
+
+    return () => {
+      window.removeEventListener('scroll', throttledScrollEvent);
+    };
   }, []);
 
   return (
@@ -35,4 +40,4 @@ const Layout: FC<LayoutProps> = ({ children, meta }) => {
   );
 };
 
-export default Layout;
+export default React.memo(Layout);

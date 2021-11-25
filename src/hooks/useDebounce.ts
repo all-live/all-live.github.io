@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-const useDebounce = <T>(value: T, delay: number): T => {
+const useDebounce = <T>(value: T, delayInMs: number): T => {
+  const timer = useRef<NodeJS.Timer | null>(null);
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {
@@ -8,9 +9,13 @@ const useDebounce = <T>(value: T, delay: number): T => {
       setDebouncedValue(value);
       return;
     }
-    const timeOutHandler = setTimeout(() => setDebouncedValue(value), delay);
-    return () => clearTimeout(timeOutHandler);
-  }, [delay, value]);
+
+    timer.current = setTimeout(() => setDebouncedValue(value), delayInMs);
+
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, [value]);
 
   return debouncedValue;
 };
